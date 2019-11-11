@@ -1,5 +1,6 @@
 # Spec Sheet
 
+<<<<<<< HEAD
 ## NN Spec
 * json file
 * Batch size specified and shared throughout all layers, append batch size by the start of the shape of layer input shape. Ex: layer ifmap is [ 15, 15, 3 ], then with batch size is [ 16, 15, 15, 3 ] is the true datashape 
@@ -52,11 +53,26 @@ Example with [ 28x28x1 ] input, [3x3x16] conv filter stride 2, and a cully conne
 ```
 
 ## Processing Engine Spec
+=======
+## Processing Element Spec
+>>>>>>> 7924385cc69fc3a39a9ed9b8b5b22a991cc899b9
 
 1 OP = 1 MAC
 CPU cycle time = 1 / core frequency
 
+Core Frequency 
+
+MAC OP energy
+
+## Bus
+Bus bandwidth
+
 ## SRAM Register / Buffer Spec
 
 ## HMC spec
+https://github.com/HewlettPackard/cacti
+
+https://github.com/rafaeljin/Systolic-Array-simulator
+
+https://github.com/ARM-software/SCALE-Sim
 
