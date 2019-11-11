@@ -1,0 +1,47 @@
+{
+    "nn_name": "fc_mnist",
+    "batch_size": 1,
+    "data_rate": 1,
+    "layers":
+    [
+        {
+            "name": "input1",
+            "type": "INPUT",
+            "out_shape": [ 784 ],
+            "activation": ""
+        },
+        {
+            "name": "fc1",
+            "type": "FC",
+            "config": 
+            {
+                "weight_shape": [ 784, 300 ]
+            },
+            "in_layer": "input1",
+            "out_shape": [ 300 ],
+            "activation": "relu"
+        },
+        {
+            "name": "fc2",
+            "type": "FC",
+            "config": 
+            {
+                "weight_shape": [ 300, 100 ]
+            },
+            "in_layer": "fc1",
+            "out_shape": [ 100 ],
+            "activation": "relu"
+        },
+        {
+            "name": "fc3",
+            "type": "FC",
+            "config": 
+            {
+                "weight_shape": [ 100, 1 ]
+            },
+            "in_layer": "fc2",
+            "out_shape": [ 1 ],
+            "activation": "sigmoid"
+        }
+    ]
+}
