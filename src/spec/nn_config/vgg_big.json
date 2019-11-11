@@ -1,0 +1,313 @@
+{
+    "nn_name": "vgg_big",
+    "batch_size": 1,
+    "data_rate": 2.5,
+    "layers":
+    [
+        {
+            "name": "input1",
+            "type": "INPUT",
+            "out_shape": [ 250, 250, 3 ],
+            "activation": ""
+        },
+        {
+            "name": "conv1",
+            "type": "CONV",
+            "config": 
+            {
+                "weight_shape": [ 3, 3, 64 ],
+                "padding": [ 1, 1, 1, 1 ],
+                "stride": [ 1, 1, 1, 1 ],
+                "dilation": [ 1, 1, 1, 1 ] 
+            },
+            "in_layer": "input1",
+            "out_shape": [ 250, 250, 64 ],
+            "activation": "relu"
+        },
+        {
+            "name": "conv2",
+            "type": "CONV",
+            "config": 
+            {
+                "weight_shape": [ 3, 3, 64 ],
+                "padding": [ 1, 1, 1, 1 ],
+                "stride": [ 1, 1, 1, 1 ],
+                "dilation": [ 1, 1, 1, 1 ] 
+            },
+            "in_layer": "conv1",
+            "out_shape": [ 250, 250, 64 ],
+            "activation": "relu"
+        },
+        {
+            "name": "conv3",
+            "type": "CONV",
+            "config": 
+            {
+                "weight_shape": [ 3, 3, 128 ],
+                "padding": [ 1, 0, 1, 0 ],
+                "stride": [ 2, 2, 2, 2 ],
+                "dilation": [ 1, 1, 1, 1 ] 
+            },
+            "in_layer": "conv2",
+            "out_shape": [ 125, 125, 128 ],
+            "activation": "relu"
+        },
+        {
+            "name": "conv4",
+            "type": "CONV",
+            "config": 
+            {
+                "weight_shape": [ 3, 3, 128 ],
+                "padding": [ 1, 1, 1, 1 ],
+                "stride": [ 1, 1, 1, 1 ],
+                "dilation": [ 1, 1, 1, 1 ] 
+            },
+            "in_layer": "conv3",
+            "out_shape": [ 125, 125, 128 ],
+            "activation": "relu"
+        },
+        {
+            "name": "conv5",
+            "type": "CONV",
+            "config": 
+            {
+                "weight_shape": [ 3, 3, 256 ],
+                "padding": [ 0, 0, 0, 0 ],
+                "stride": [ 2, 2, 2, 2 ],
+                "dilation": [ 1, 1, 1, 1 ] 
+            },
+            "in_layer": "conv4",
+            "out_shape": [ 62, 62, 256 ],
+            "activation": "relu"
+        },
+        {
+            "name": "conv6",
+            "type": "CONV",
+            "config": 
+            {
+                "weight_shape": [ 3, 3, 256 ],
+                "padding": [ 1, 1, 1, 1 ],
+                "stride": [ 1, 1, 1, 1 ],
+                "dilation": [ 1, 1, 1, 1 ] 
+            },
+            "in_layer": "conv5",
+            "out_shape": [ 62, 62, 256 ],
+            "activation": "relu"
+        },
+        {
+            "name": "conv7",
+            "type": "CONV",
+            "config": 
+            {
+                "weight_shape": [ 3, 3, 256 ],
+                "padding": [ 1, 1, 1, 1 ],
+                "stride": [ 1, 1, 1, 1 ],
+                "dilation": [ 1, 1, 1, 1 ] 
+            },
+            "in_layer": "conv6",
+            "out_shape": [ 62, 62, 256 ],
+            "activation": "relu"
+        },
+        {
+            "name": "conv8",
+            "type": "CONV",
+            "config": 
+            {
+                "weight_shape": [ 3, 3, 256 ],
+                "padding": [ 1, 1, 1, 1 ],
+                "stride": [ 1, 1, 1, 1 ],
+                "dilation": [ 1, 1, 1, 1 ] 
+            },
+            "in_layer": "conv7",
+            "out_shape": [ 62, 62, 256 ],
+            "activation": "relu"
+        },
+        {
+            "name": "conv9",
+            "type": "CONV",
+            "config": 
+            {
+                "weight_shape": [ 3, 3, 512 ],
+                "padding": [ 1, 2, 1, 2 ],
+                "stride": [ 2, 2, 2, 2 ],
+                "dilation": [ 1, 1, 1, 1 ] 
+            },
+            "in_layer": "conv8",
+            "out_shape": [ 32, 32, 512 ],
+            "activation": "relu"
+        },
+        {
+            "name": "conv10",
+            "type": "CONV",
+            "config": 
+            {
+                "weight_shape": [ 3, 3, 512 ],
+                "padding": [ 1, 1, 1, 1 ],
+                "stride": [ 1, 1, 1, 1 ],
+                "dilation": [ 1, 1, 1, 1 ] 
+            },
+            "in_layer": "conv9",
+            "out_shape": [ 32, 32, 512 ],
+            "activation": "relu"
+        },
+        {
+            "name": "conv11",
+            "type": "CONV",
+            "config": 
+            {
+                "weight_shape": [ 3, 3, 512 ],
+                "padding": [ 1, 1, 1, 1 ],
+                "stride": [ 1, 1, 1, 1 ],
+                "dilation": [ 1, 1, 1, 1 ] 
+            },
+            "in_layer": "conv10",
+            "out_shape": [ 32, 32, 512 ],
+            "activation": "relu"
+        },
+        {
+            "name": "conv12",
+            "type": "CONV",
+            "config": 
+            {
+                "weight_shape": [ 3, 3, 512 ],
+                "padding": [ 1, 1, 1, 1 ],
+                "stride": [ 1, 1, 1, 1 ],
+                "dilation": [ 1, 1, 1, 1 ] 
+            },
+            "in_layer": "conv11",
+            "out_shape": [ 32, 32, 512 ],
+            "activation": "relu"
+        },
+        {
+            "name": "conv13",
+            "type": "CONV",
+            "config": 
+            {
+                "weight_shape": [ 3, 3, 512 ],
+                "padding": [ 1, 1, 1, 1 ],
+                "stride": [ 1, 1, 1, 1 ],
+                "dilation": [ 1, 1, 1, 1 ] 
+            },
+            "in_layer": "conv12",
+            "out_shape": [ 32, 32, 512 ],
+            "activation": "relu"
+        },
+        {
+            "name": "conv14",
+            "type": "CONV",
+            "config": 
+            {
+                "weight_shape": [ 3, 3, 512 ],
+                "padding": [ 1, 0, 1, 0 ],
+                "stride": [ 2, 2, 2, 2 ],
+                "dilation": [ 1, 1, 1, 1 ] 
+            },
+            "in_layer": "conv13",
+            "out_shape": [ 16, 16, 512 ],
+            "activation": "relu"
+        },
+        {
+            "name": "conv15",
+            "type": "CONV",
+            "config": 
+            {
+                "weight_shape": [ 3, 3, 512 ],
+                "padding": [ 1, 1, 1, 1 ],
+                "stride": [ 1, 1, 1, 1 ],
+                "dilation": [ 1, 1, 1, 1 ] 
+            },
+            "in_layer": "conv14",
+            "out_shape": [ 16, 16, 512 ],
+            "activation": "relu"
+        },
+        {
+            "name": "conv16",
+            "type": "CONV",
+            "config": 
+            {
+                "weight_shape": [ 3, 3, 512 ],
+                "padding": [ 1, 1, 1, 1 ],
+                "stride": [ 1, 1, 1, 1 ],
+                "dilation": [ 1, 1, 1, 1 ] 
+            },
+            "in_layer": "conv15",
+            "out_shape": [ 16, 16, 512 ],
+            "activation": "relu"
+        },
+        {
+            "name": "conv17",
+            "type": "CONV",
+            "config": 
+            {
+                "weight_shape": [ 3, 3, 512 ],
+                "padding": [ 1, 1, 1, 1 ],
+                "stride": [ 1, 1, 1, 1 ],
+                "dilation": [ 1, 1, 1, 1 ] 
+            },
+            "in_layer": "conv16",
+            "out_shape": [ 16, 16, 512 ],
+            "activation": "relu"
+        },
+        {
+            "name": "conv18",
+            "type": "CONV",
+            "config": 
+            {
+                "weight_shape": [ 3, 3, 512 ],
+                "padding": [ 1, 1, 1, 1 ],
+                "stride": [ 1, 1, 1, 1 ],
+                "dilation": [ 1, 1, 1, 1 ] 
+            },
+            "in_layer": "conv17",
+            "out_shape": [ 16, 16, 512 ],
+            "activation": "relu"
+        },
+        {
+            "name": "conv19",
+            "type": "CONV",
+            "config": 
+            {
+                "weight_shape": [ 3, 3, 512 ],
+                "padding": [ 1, 0, 1, 0 ],
+                "stride": [ 2, 2, 2, 2 ],
+                "dilation": [ 1, 1, 1, 1 ] 
+            },
+            "in_layer": "conv18",
+            "out_shape": [ 8, 8, 512 ],
+            "activation": "relu"
+        },
+        {
+            "name": "fc1",
+            "type": "FC",
+            "config": 
+            {
+                "weight_shape": [ 32768, 4096 ]
+            },
+            "in_layer": "conv19",
+            "out_shape": [ 4096 ],
+            "activation": "relu"
+        },
+        {
+            "name": "fc2",
+            "type": "FC",
+            "config": 
+            {
+                "weight_shape": [ 4096, 4096 ]
+            },
+            "in_layer": "fc1",
+            "out_shape": [ 4096 ],
+            "activation": "relu"
+        },
+        {
+            "name": "fc3",
+            "type": "FC",
+            "config": 
+            {
+                "weight_shape": [ 4096, 100 ]
+            },
+            "in_layer": "fc2",
+            "out_shape": [ 100 ],
+            "activation": "softmax"
+        }
+    ]
+}
