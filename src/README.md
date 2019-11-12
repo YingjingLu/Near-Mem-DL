@@ -9,7 +9,7 @@
 
 ##### Loading DL Models
 * DNN Confog: <json>
-
+* Load throughput for loading from disk Byte/s
 ##### Data IO
 Input (csv file, each trace is "," separated)
 * Time elapse of the request (in ms)
