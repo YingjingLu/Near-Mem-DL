@@ -1,0 +1,67 @@
+{
+    "nn_name": "lenet_mnist",
+    "batch_size": 1,
+    "data_rate": 2.5,
+    "layers":
+    [
+        {
+            "name": "input1",
+            "type": "INPUT",
+            "out_shape": [ 28, 28, 1 ],
+            "activation": ""
+        },
+        {
+            "name": "conv1",
+            "type": "CONV",
+            "config": 
+            {
+                "weight_shape": [ 3, 3, 16 ],
+                "padding": [ 1, 0, 1, 0 ],
+                "stride": [ 2, 2, 2, 2 ],
+                "dilation": [ 1, 1, 1, 1 ] 
+            },
+            "in_layer": "input1",
+            "out_shape": [ 14, 14, 16 ],
+            "activation": "relu"
+        },
+        {
+            "name": "conv2",
+            "type": "CONV",
+            "config": 
+            {
+                "weight_shape": [ 3, 3, 32 ],
+                "padding": [ 1, 0, 1, 0 ],
+                "stride": [ 2, 2, 2, 2 ],
+                "dilation": [ 1, 1, 1, 1 ] 
+            },
+            "in_layer": "conv1",
+            "out_shape": [ 7, 7, 32 ],
+            "activation": "relu"
+        },
+        {
+            "name": "conv3",
+            "type": "CONV",
+            "config": 
+            {
+                "weight_shape": [ 3, 3, 64 ],
+                "padding": [ 1, 1, 1, 1 ],
+                "stride": [ 2, 2, 2, 2 ],
+                "dilation": [ 1, 1, 1, 1 ] 
+            },
+            "in_layer": "conv2",
+            "out_shape": [ 4, 4, 64 ],
+            "activation": "relu"
+        },
+        {
+            "name": "fc1",
+            "type": "FC",
+            "config": 
+            {
+                "weight_shape": [ 16384, 1 ]
+            },
+            "in_layer": "conv3",
+            "out_shape": [ 1 ],
+            "activation": "sigmoid"
+        }
+    ]
+}
