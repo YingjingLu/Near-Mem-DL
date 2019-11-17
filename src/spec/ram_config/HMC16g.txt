@@ -1,0 +1,216 @@
+Cache size                    : 16
+Block size                    : 128
+Associativity                 : 1
+Read only ports               : 0
+Write only ports              : 0
+Read write ports              : 1
+Single ended read ports       : 0
+Cache banks (UCA)             : 8
+Technology                    : 0.05
+Temperature                   : 350
+Tag size                      : 42
+array type                    : Scratch RAM
+Model as memory               : 1
+Model as 3D memory       	 : 1
+Access mode                   : 2
+Data array cell type          : 4
+Data array peripheral type    : 1
+Tag array cell type           : 0
+Tag array peripheral type     : 0
+Optimization target           : 0
+Design objective (UCA wt)     : 0 0 0 0 100
+Design objective (UCA dev)    : 50 100000 100000 100000 1000000
+Cache model                   : 0
+Nuca bank                     : 0
+Wire inside mat               : 1
+Wire outside mat              : 2
+Interconnect projection       : 1
+Wire signaling               : 1
+Print level                   : 1
+ECC overhead                  : 1
+Page size                     : 8192
+Burst length                  : 4
+Internal prefetch width       : 1
+Force cache config            : 1
+Ndwl                          : 16
+Ndbl                          : 32
+Nspd                          : 1
+Ndcm                          : 1
+Ndsam1                        : 1
+Ndsam2                        : 1
+Subarray Driver direction       : 1
+iostate                       : READ
+dram_ecc                      : NO_ECC
+io_type                     : DDR3
+dram_dimm                      : UDIMM
+IO Area (sq.mm) = inf
+IO Timing Margin (ps) = 35.8333
+IO Votlage Margin (V) = 0.155
+IO Dynamic Power (mW) = 1282.42 PHY Power (mW) = 232.752 PHY Wakeup Time (us) = 27.503
+IO Termination and Bias Power (mW) = 3136.7
+-------  CACTI (version 7.0.3DD Prerelease of Aug, 2012) 3D DRAM Main Memory  -------
+
+Memory Parameters:
+	Total memory size (Gb): 16
+	Stacked die count: 4
+	TSV projection: industrial conservative
+	Number of banks: 8
+	Technology size (nm): 50
+	Page size (bits): 8192
+	Burst depth: 8
+	Chip IO width: 4
+	Best Ndwl: 16
+	Best Ndbl: 32
+	# rows in subarray: 2048
+	# columns in subarray: 512
+
+Results:
+Timing Components:
+	   t_RCD (Row to column command delay): 1.14548e+107 ns
+	   t_RAS (Row access strobe latency): 1.14548e+107 ns
+	   t_RC (Row cycle): 1.14548e+107 ns
+	   t_CAS (Column access strobe latency): 2.29096e+107 ns
+	   t_RP (Row precharge latency): 1.14548e+107 ns
+	   t_RRD (Row activation to row activation delay): 1.14548e+107 ns
+Power Components:
+	   Activation energy: 6.2342e+54 nJ
+	   Read energy: 6.2342e+54 nJ
+	   Write energy: 6.2342e+54 nJ
+	   Precharge energy: 6.2342e+54 nJ
+Area Components:
+	   DRAM core area: 116.917 mm2
+	   DRAM area per die: 165.441 mm2
+	   Area efficiency: 45.1231%
+	   DRAM die width: 7.83991 mm
+	   DRAM die height: 21.0721 mm
+TSV Components:
+	   TSV area overhead: 0.2368 mm2
+	   TSV latency overhead: 1.14548e+107 ns
+	   TSV energy overhead per access: 6.2342e+54 nJ
+
+
+3D DRAM Detail Components:
+
+
+Time Components:
+
+	 row activation bus delay (ns): 6.33656
+	 row predecoder delay (ns): 0.723261
+	 row decoder delay (ns): 0.863293
+	 local wordline delay (ns): 1.06504
+	 bitline delay (ns): 7.23334
+	 sense amp delay (ns): 0.0415393
+	 column access bus delay (ns): 6.33656
+	 column predecoder delay (ns): 0.357764
+	 column decoder delay (ns): 2.11219
+	 datapath bus delay (ns): 6.33656
+	 global dataline delay (ns): 4.76444
+	 local dataline delay (ns): 0.65664
+	 data buffer delay (ns): 2.95421
+	 subarray output driver delay (ns): 0.30785
+
+Energy Components:
+
+	 row activation bus energy (nJ): 0.2129
+	 row predecoder energy (nJ): 0.00060905
+	 row decoder energy (nJ): 0.00223418
+	 local wordline energy (nJ): 0.00282449
+	 bitline energy (nJ): 3.11848
+	 sense amp energy (nJ): 0.0687561
+	 column access bus energy (nJ): 0.172982
+	 column predecoder energy (nJ): 4.63255e-05
+	 column decoder energy (nJ): 0.000387658
+	 column selectline energy (nJ): 0.344281
+	 datapath bus energy (nJ): 0.425801
+	 global dataline energy (nJ): 0.0133134
+	 local dataline energy (nJ): 0.0341787
+	 data buffer energy (nJ): 0.00026899
+
+Area Components:
+
+	 DRAM cell area (mm2): 74.6519
+	 local WL driver area (mm2): 33.5275
+	 subarray sense amp area (mm2): 3.87505
+	 row predecoder/decoder area (mm2): 0.478214
+	 column predecoder/decoder area (mm2): 0.00421337
+	 center stripe bus area (mm2): 1.02545
+	 address bus area (mm2): 0.356798
+	 data bus area (mm2): 0.0892797
+	 data driver area (mm2): 0.00409271
+	 IO secondary sense amp area (mm2): 0.00176
+	 TSV area (mm2): 0.2368
+
+Wire Properties:
+
+  Delay Optimal
+	Repeater size - 204.471 
+	Repeater spacing - 0.506221 (mm) 
+	Delay - 0.155136 (ns/mm) 
+	PowerD - 0.000808822 (nJ/mm) 
+	PowerL - 4.83113e-06 (mW/mm) 
+	PowerLgate - 1.89076e-06 (mW/mm)
+	Wire width - 0.1 microns
+	Wire spacing - 0.1 microns
+
+  5% Overhead
+	Repeater size - 112.471 
+	Repeater spacing - 0.706221 (mm) 
+	Delay - 0.162817 (ns/mm) 
+	PowerD - 0.000520737 (nJ/mm) 
+	PowerL - 1.90483e-06 (mW/mm) 
+	PowerLgate - 7.45493e-07 (mW/mm)
+	Wire width - 0.1 microns
+	Wire spacing - 0.1 microns
+
+  10% Overhead
+	Repeater size - 101.471 
+	Repeater spacing - 0.806221 (mm) 
+	Delay - 0.170385 (ns/mm) 
+	PowerD - 0.000488431 (nJ/mm) 
+	PowerL - 1.50537e-06 (mW/mm) 
+	PowerLgate - 5.89158e-07 (mW/mm)
+	Wire width - 0.1 microns
+	Wire spacing - 0.1 microns
+
+  20% Overhead
+	Repeater size - 81.4708 
+	Repeater spacing - 0.906221 (mm) 
+	Delay - 0.186003 (ns/mm) 
+	PowerD - 0.000444659 (nJ/mm) 
+	PowerL - 1.07529e-06 (mW/mm) 
+	PowerLgate - 4.20836e-07 (mW/mm)
+	Wire width - 0.1 microns
+	Wire spacing - 0.1 microns
+
+  30% Overhead
+	Repeater size - 70.4708 
+	Repeater spacing - 1.00622 (mm) 
+	Delay - 0.201033 (ns/mm) 
+	PowerD - 0.000422153 (nJ/mm) 
+	PowerL - 8.3767e-07 (mW/mm) 
+	PowerLgate - 3.27839e-07 (mW/mm)
+	Wire width - 0.1 microns
+	Wire spacing - 0.1 microns
+
+  Low-swing wire (1 mm) - Note: Unlike repeated wires, 
+	delay and power values of low-swing wires do not
+	have a linear relationship with length. 
+	delay - 0.441619 (ns) 
+	powerD - 6.95985e-06 (nJ) 
+	PowerL - 1.20052e-10 (mW) 
+	PowerLgate - 8.49258e-11 (mW)
+	Wire width - 2e-07 microns
+	Wire spacing - 2e-07 microns
+
+
+top 3 best memory configurations are:
+Memory    cap: 80 GB num_bobs: 1 bw: 533 (MHz) cost: $731.2 energy: 32.6101 (nJ) 
+ {
+ (0)  BoB       cap: 80 GB num_channels: 1 bw: 533 (MHz) cost: $731.2 energy: 32.6101 (nJ) 
+    ==============
+    (0) cap: 80 GB bw: 533 (MHz) cost: $731.2 dpc: 3 energy: 32.6101 (nJ)  DIMM:  RDIMM  low power: F [ 0(4GB) 0(8GB) 1(16GB) 2(32GB) 0(64GB) ]
+    ==============
+
+ }
+
+=============================================
