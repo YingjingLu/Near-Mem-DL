@@ -72,3 +72,15 @@ https://github.com/rafaeljin/Systolic-Array-simulator
 
 https://github.com/ARM-software/SCALE-Sim
 
+
+## HMC Computation
+
+
+## HMC layout
+
+* vault
+* layer
+* bank
+* subarray
+* row
+* col 

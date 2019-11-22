@@ -1,0 +1,85 @@
+{
+    "config":
+    {
+        "size": 16,
+        "block_size": 128,
+        "num_vault": 8,
+        "num_bank": 8,
+        "subarray_row": 2048,
+        "subarray_col": 512,
+        "output_input_bus_width": 64, 
+        "num_clk": 2,
+        "mem_data_width": 8,
+        "page_size": 8192,
+        "burst_depth": 8,
+        "io_width": 4,
+        "system_frequency": 677,
+        "stacked_die_count": 4,
+        "tsv_projection": 1
+    },
+    "spec":
+    {
+        "timing":
+        {
+            "row_activation_bus_delay" : 6.33656,
+            "row_predecoder_delay": 0.723261,
+            "row_decoder_delay": 0.863293,
+            "local_wordline_delay": 1.06504,
+            "bitline_delay": 7.2334,
+            "sense_amp_delay": 0.0415393,
+            "column_access_bus_delay": 6.33656,
+            "column_predecoder_delay": 0.357764,
+            "column_decoder_delay": 2.11219,
+            "datapath_bus_delay": 6.33656,
+            "global_dataline_delay": 4.76444,
+            "local_dataline_delay": 0.65664,
+            "data_buffer_delay":2.95421,
+            "subarray_output_driver_delay": 0.60785
+        },
+        "energy":
+        {
+            "row_activation_bus_energy": 0.2129,
+            "row_predecoder_energy": 0.00060905,
+            "row_decoder_energy" : 0.0023418,
+            "local_wordline_energy": 0.00282449,
+            "bitline_energy": 3.11848,
+            "sense_amp_energy": 0.687561,
+            "column_access_bus_energy": 0.172982,
+            "column_predecoder_energy": 0.0000463255,
+            "column_selectline_energy": 0.344281,
+            "datapath_bus_energy": 0.425801,
+            "global_dataline_energy": 0.0133134,
+            "local_dataline_energy": 0.0341787,
+            "data_buffer_energy": 0.000269899
+        },
+        "area":
+        {
+            "DRAM_cell_area": 74.6519,
+            "local_WL_driver_area": 33.5275,
+            "subarray sense amp area": 3.87505,
+            "row_predecoder_decoder_area": 0.478214,
+            "column_predecoder_decoder_area": 0.00421337,
+            "center_stripe_bus_area": 1.02545,
+            "address_bus_area": 0.356798,
+            "data_bus_area": 0.0892797,
+            "data_driver_area": 0.00409271,
+            "IO_secondary_sense_amp_area": 0.000176,
+            "TSV_area": 0.2368
+        },
+        "wire":
+        {
+            "repeater_size": 204.471,
+            "repeater_spacing": 0.506221,
+            "delay": 0.155136,
+            "powerd": 0.000808822,
+            "powerl": 0.00000483113,
+            "powerlgate": 0.00000189076,
+            "wire_width": 0.1,
+            "wire_spacing": 0.1
+        }
+    },
+    "bus":
+    {
+        "bandwidth": 8
+    }
+}
