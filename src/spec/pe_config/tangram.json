@@ -1,0 +1,18 @@
+{
+    "tile_row": 16,
+    "tile_col": 16,
+
+    "gbuf": 0,
+    "arr_row": 8,
+    "arr_col": 8,
+
+    "pe_width": 16,
+    "pe_clock": 500,
+    "pe_energy": 1e-3,
+    "pe_noc": 6.1e-4,
+    
+    "reg_read_energy": 0.5e-3,
+    "reg_write_energy": 0.5e-3,
+    "reg_read_latency": 0.1e-3,
+    "reg_write_latency": 0.1e-3
+}
