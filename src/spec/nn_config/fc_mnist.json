@@ -17,7 +17,7 @@
             {
                 "weight_shape": [ 784, 300 ]
             },
-            "in_layer": "input1",
+            "in_layer": ["input1"],
             "out_shape": [ 300 ],
             "activation": "relu"
         },
@@ -28,7 +28,7 @@
             {
                 "weight_shape": [ 300, 100 ]
             },
-            "in_layer": "fc1",
+            "in_layer": ["fc1"],
             "out_shape": [ 100 ],
             "activation": "relu"
         },
@@ -39,7 +39,7 @@
             {
                 "weight_shape": [ 100, 1 ]
             },
-            "in_layer": "fc2",
+            "in_layer": ["fc2"],
             "out_shape": [ 1 ],
             "activation": "sigmoid"
         }

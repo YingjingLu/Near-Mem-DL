@@ -20,7 +20,7 @@
                 "stride": [ 1, 1, 1, 1 ],
                 "dilation": [ 1, 1, 1, 1 ] 
             },
-            "in_layer": "input1",
+            "in_layer": ["input1"],
             "out_shape": [ 250, 250, 64 ],
             "activation": "relu"
         },
@@ -34,7 +34,7 @@
                 "stride": [ 1, 1, 1, 1 ],
                 "dilation": [ 1, 1, 1, 1 ] 
             },
-            "in_layer": "conv1",
+            "in_layer": ["conv1"],
             "out_shape": [ 250, 250, 64 ],
             "activation": "relu"
         },
@@ -48,7 +48,7 @@
                 "stride": [ 2, 2, 2, 2 ],
                 "dilation": [ 1, 1, 1, 1 ] 
             },
-            "in_layer": "conv2",
+            "in_layer": ["conv2"],
             "out_shape": [ 125, 125, 128 ],
             "activation": "relu"
         },
@@ -62,7 +62,7 @@
                 "stride": [ 1, 1, 1, 1 ],
                 "dilation": [ 1, 1, 1, 1 ] 
             },
-            "in_layer": "conv3",
+            "in_layer": ["conv3"],
             "out_shape": [ 125, 125, 128 ],
             "activation": "relu"
         },
@@ -76,7 +76,7 @@
                 "stride": [ 2, 2, 2, 2 ],
                 "dilation": [ 1, 1, 1, 1 ] 
             },
-            "in_layer": "conv4",
+            "in_layer": ["conv4"],
             "out_shape": [ 62, 62, 256 ],
             "activation": "relu"
         },
@@ -90,7 +90,7 @@
                 "stride": [ 1, 1, 1, 1 ],
                 "dilation": [ 1, 1, 1, 1 ] 
             },
-            "in_layer": "conv5",
+            "in_layer": ["conv5"],
             "out_shape": [ 62, 62, 256 ],
             "activation": "relu"
         },
@@ -104,7 +104,7 @@
                 "stride": [ 1, 1, 1, 1 ],
                 "dilation": [ 1, 1, 1, 1 ] 
             },
-            "in_layer": "conv6",
+            "in_layer": ["conv6"],
             "out_shape": [ 62, 62, 256 ],
             "activation": "relu"
         },
@@ -118,7 +118,7 @@
                 "stride": [ 1, 1, 1, 1 ],
                 "dilation": [ 1, 1, 1, 1 ] 
             },
-            "in_layer": "conv7",
+            "in_layer": ["conv7"],
             "out_shape": [ 62, 62, 256 ],
             "activation": "relu"
         },
@@ -132,7 +132,7 @@
                 "stride": [ 2, 2, 2, 2 ],
                 "dilation": [ 1, 1, 1, 1 ] 
             },
-            "in_layer": "conv8",
+            "in_layer": ["conv8"],
             "out_shape": [ 32, 32, 512 ],
             "activation": "relu"
         },
@@ -146,7 +146,7 @@
                 "stride": [ 1, 1, 1, 1 ],
                 "dilation": [ 1, 1, 1, 1 ] 
             },
-            "in_layer": "conv9",
+            "in_layer": ["conv9"],
             "out_shape": [ 32, 32, 512 ],
             "activation": "relu"
         },
@@ -160,7 +160,7 @@
                 "stride": [ 1, 1, 1, 1 ],
                 "dilation": [ 1, 1, 1, 1 ] 
             },
-            "in_layer": "conv10",
+            "in_layer": ["conv10"],
             "out_shape": [ 32, 32, 512 ],
             "activation": "relu"
         },
@@ -174,7 +174,7 @@
                 "stride": [ 1, 1, 1, 1 ],
                 "dilation": [ 1, 1, 1, 1 ] 
             },
-            "in_layer": "conv11",
+            "in_layer": ["conv11"],
             "out_shape": [ 32, 32, 512 ],
             "activation": "relu"
         },
@@ -188,7 +188,7 @@
                 "stride": [ 1, 1, 1, 1 ],
                 "dilation": [ 1, 1, 1, 1 ] 
             },
-            "in_layer": "conv12",
+            "in_layer": ["conv12"],
             "out_shape": [ 32, 32, 512 ],
             "activation": "relu"
         },
@@ -202,7 +202,7 @@
                 "stride": [ 2, 2, 2, 2 ],
                 "dilation": [ 1, 1, 1, 1 ] 
             },
-            "in_layer": "conv13",
+            "in_layer": ["conv13"],
             "out_shape": [ 16, 16, 512 ],
             "activation": "relu"
         },
@@ -216,7 +216,7 @@
                 "stride": [ 1, 1, 1, 1 ],
                 "dilation": [ 1, 1, 1, 1 ] 
             },
-            "in_layer": "conv14",
+            "in_layer": ["conv14"],
             "out_shape": [ 16, 16, 512 ],
             "activation": "relu"
         },
@@ -230,7 +230,7 @@
                 "stride": [ 1, 1, 1, 1 ],
                 "dilation": [ 1, 1, 1, 1 ] 
             },
-            "in_layer": "conv15",
+            "in_layer": ["conv15"],
             "out_shape": [ 16, 16, 512 ],
             "activation": "relu"
         },
@@ -244,7 +244,7 @@
                 "stride": [ 1, 1, 1, 1 ],
                 "dilation": [ 1, 1, 1, 1 ] 
             },
-            "in_layer": "conv16",
+            "in_layer": ["conv16"],
             "out_shape": [ 16, 16, 512 ],
             "activation": "relu"
         },
@@ -258,7 +258,7 @@
                 "stride": [ 1, 1, 1, 1 ],
                 "dilation": [ 1, 1, 1, 1 ] 
             },
-            "in_layer": "conv17",
+            "in_layer": ["conv17"],
             "out_shape": [ 16, 16, 512 ],
             "activation": "relu"
         },
@@ -272,7 +272,7 @@
                 "stride": [ 2, 2, 2, 2 ],
                 "dilation": [ 1, 1, 1, 1 ] 
             },
-            "in_layer": "conv18",
+            "in_layer": ["conv18"],
             "out_shape": [ 8, 8, 512 ],
             "activation": "relu"
         },
@@ -283,7 +283,7 @@
             {
                 "weight_shape": [ 32768, 4096 ]
             },
-            "in_layer": "conv19",
+            "in_layer": ["conv19"],
             "out_shape": [ 4096 ],
             "activation": "relu"
         },
@@ -294,7 +294,7 @@
             {
                 "weight_shape": [ 4096, 4096 ]
             },
-            "in_layer": "fc1",
+            "in_layer": ["fc1"],
             "out_shape": [ 4096 ],
             "activation": "relu"
         },
@@ -305,7 +305,7 @@
             {
                 "weight_shape": [ 4096, 100 ]
             },
-            "in_layer": "fc2",
+            "in_layer": ["fc2"],
             "out_shape": [ 100 ],
             "activation": "softmax"
         }

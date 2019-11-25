@@ -1,5 +1,6 @@
 import json 
 from solver import * 
+from hmc import HMC
 class Dataflow( object ):
 
     def __init__( self, nn_config_file, pe_config_file, buffer_config_file, ram_config_file, bit_unit = 16 ):
@@ -10,12 +11,29 @@ class Dataflow( object ):
         self.ram_config_file = ram_config_file 
         self.bit_unit = bit_unit
 
+
+    def place_weight( self ):
+        """
+        determine which part of the weight is placed in which vault
+        for lowest amount memory access
+        """
+        pass 
+    def place_input( self ):
+        pass
+
+    def do_calculation_place_partial( self ):
+        pass 
+
+
     def parse_nn_config( self ):
         with open( self.nn_config_file, "r" ) as f:
             nn_dict = json.load( f )
-            self.layer_list = nn_dict[ "layers" ]
+            self.layer_stack = nn_dict[ "layers" ]
             self.bach_size = nn_dict[ "batch_size" ]
             self.nn_name = nn_dict[ "nn_name" ]
+        
+        # perform topological sort to determine dependency graph among layers
+        self.layer_stack = self.topo_sort_layers( self.layer_stack )
 
     def parse_pe_config( self ):
         with open( self.pe_config_file, "r" ) as f:
@@ -42,6 +60,38 @@ class Dataflow( object ):
     # def parse_buffer_config( self ):
     #     pass
 
-    def parse_ram_config( self, hmc ):
-        self.hmc = hmc
+    def parse_ram_config( self ):
+        self.hmc = HMC( self.ram_config_file, self.bit_unit )
+
+    def topo_sort_layers( self, list ):
+        # name, count
+        incoming =  dict()
+        # name: [ name ]
+        outgoing = dict()
+        name_dict = dict()
+        
+        queue = []
+        for layer in list:
+            name = layer[ "name" ]
+            name_dict[ name ] = layer 
+            if layer[ "type" ] == "INPUT":
+                incoming[ name ] = 0
+                queue.append( layer )
+            else:
+                incoming[ name ] = len( layer[ in_layer ] )
+                for in_layer in layer[ "in_layer" ]:
+                    outgoing[ in_layer ].add( name )
+            outgoing[ name ] = set() 
+        res = []
+        while len( queue ) != 0:
+            l = queue.pop()
+            res.append( l )
+            for out in outgoing[ l ]:
+                incoming[ out ] -= 1
+                if incoming[ out ] == 0:
+                    queue.append( out )
+        return res
+
+
+
 

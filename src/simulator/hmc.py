@@ -1,8 +1,8 @@
 
 class HMC( object ):
-    def __init__( self, config ):
+    def __init__( self, config, bit_unit ):
         self.config = config 
-
+        self.bit_unit = bit_unit
         # spec short cut 
         self.total_size = self.config[ "config" ][ "size" ]
         self.num_bank = self.config[ "config" ][ "num_bank" ]
@@ -40,26 +40,47 @@ class HMC( object ):
                     ] for _ in range( self.num_layer ) \
                 ] for _ in range( self.num_vault )\
             ]
+
+
+        self.mem_topology = dict()
     
     def process_read( self, trace ):
         pass 
 
-    def mem_read( self,
-                  in_time, 
-                  req_vault, dest_vault, 
-                  req_layer_name, 
-                  req_row_start_idx, req_col_start_idx, 
-                  req_row_end_idx, req_col_end_idx ):
+    def mem_read_weight(    self,
+                            in_time, 
+                            req_vault, dest_vault, 
+                            layer_name, 
+                            start_row, start_col, 
+                            end_row, end_col ):
         pass 
+    
+    def mem_read_partial( self,
+                          in_time,
+                          req_vault, dest_vault,
+                          layer_name,
+                          start_row, start_col,
+                          end_row, end_col ):
+        pass 
+
 
     def process_write( self, trace ):
         pass 
 
-    def mem_write( self,
-                   in_time, 
-                   dest_vault, 
-                   req_layer_name, 
-                 ):
+    def mem_write_weight(   self,
+                            in_time, 
+                            dest_vault, 
+                            layer_name, 
+                            start_row, start_col,
+                            end_row, end_col ):
+        pass 
+    
+    def mem_write_partial(      self,
+                                in_time, 
+                                dest_vault, 
+                                layer_name, 
+                                start_row, start_col,
+                                end_row, end_col ):
         pass 
 
     # subspec calculation in ns / bit, nj / bit

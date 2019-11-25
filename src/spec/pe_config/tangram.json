@@ -14,5 +14,8 @@
     "reg_read_energy": 0.5e-3,
     "reg_write_energy": 0.5e-3,
     "reg_read_latency": 0.1e-3,
-    "reg_write_latency": 0.1e-3
+    "reg_write_latency": 0.1e-3,
+
+    "area_budget": 120,
+    "technology": "TSMC 28nm"
 }
