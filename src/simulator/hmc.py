@@ -54,15 +54,15 @@ class HMC( object ):
     
     def process_access( self, trace ):
         raw = trace.strip().split( "," ) 
-        raw[ 1 ] = float( raw[ 1 ] )
-        for i in [ 2, 3, 5, 6, 7, 8 ]:
+        raw[ 2 ] = float( raw[ 2 ] )
+        for i in [ 3, 4, 6, 7, 8, 9 ]:
             raw[ i ] = int( raw[ i ] )
         if raw[ 0 ] == "weight":
-            raw = raw[ 1: ]
+            raw = raw[ 2: ]
             if self.mode == "naive":
                 self.naive_mem_access_weight( *raw )
         elif raw[ 0 ] == "fmap":
-            raw = raw[ 1: ]
+            raw = raw[ 2: ]
             if self.mode == "naive":
                 self.naive_mem_access_partial( *raw )
         else:

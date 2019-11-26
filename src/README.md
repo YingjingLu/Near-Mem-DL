@@ -13,6 +13,7 @@
 ##### Data IO
 Input (csv file, each trace is "," separated)
 * weight / fmap
+* read / write / free
 * Time elapse of the request (in ms)
 * Vault Index from the processor making the request
 * Vault Index the data's destination
