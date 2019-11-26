@@ -1,8 +1,12 @@
+from mem_solver import * 
+import math 
+
 
 class HMC( object ):
-    def __init__( self, config, bit_unit ):
+    def __init__( self, config, bit_unit, mode = "naive" ):
         self.config = config 
         self.bit_unit = bit_unit
+        self.mode = mode
         # spec short cut 
         self.total_size = self.config[ "config" ][ "size" ]
         self.num_bank = self.config[ "config" ][ "num_bank" ]
@@ -10,6 +14,9 @@ class HMC( object ):
         self.num_vault = self.config[ "config" ][ "num_vault" ]
         self.subarray_row = self.config[ "config" ][ "subarray_row" ]
         self.subarray_col = self.config[ "config" ][ "subarray_col" ]
+        self.subarray_row_word = self.subarray_row // self.bit_unit 
+        self.subarray_col_word = self.subarray_col // self.bit_unit 
+
         # calc derived spec 
         self.subarray_per_bank = self.calc_subarray_per_bank()
         self.cas_latency = self.calc_cas_latency()
@@ -44,8 +51,116 @@ class HMC( object ):
 
         self.mem_topology = dict()
     
-    def process_read( self, trace ):
-        pass 
+    def process_access( self, trace ):
+        raw = trace.strip().split() 
+        raw[ 1 ] = float( raw[ 1 ] )
+        for i in [ 2, 3, 5, 6, 7, 8 ]:
+            raw[ i ] = int( raw[ i ] )
+        if raw[ 0 ] == "weight":
+            raw = raw[ 1: ]
+            if self.mode == "naive":
+                self.naive_mem_access_weight( *raw )
+        elif raw[ 0 ] == "fmap":
+            raw = raw[ 1: ]
+            if self.mode == "naive":
+                self.naive_mem_access_partial( *raw )
+        else:
+            NotImplementedError( "Access not implemented: {}".format( raw[ 0 ] ) )
+
+    def get_summary( self ):
+        ras_energy = self.num_row_access * self.ras_energy
+        cas_energy = self.num_col_access * self.cas_energy
+
+        ras_latency = self.num_row_access * self.ras_latency
+        cas_latency = self.num_col_access * self.cas_latency
+
+        cross_vault_bus_latency = self.cross_vault_bus_latency * self.num_cross_vault_access
+
+
+        print(
+            """
+            Total row access: {}
+            Total col access: {}
+            Total memory acess: {} bits
+            cross vault access: {}
+            -----------------------------------------
+            Energy
+            Row access energy: {} nj
+            Col access energy {} nj
+            Total energy consumption: {}
+            Unit energy {}: nj / bit
+            -----------------------------------------
+            Latency
+            Row access latency: {} ns
+            Col access latency: {} ns
+            Cross vault access latency: {} ns
+            Total letency: {} ns
+            Unit latency: {} ns / bit
+            """.format(
+                self.num_row_access,
+                self.num_col_access,
+                self.num_col_access,
+                self.num_cross_vault_access,
+
+                ras_energy,
+                cas_energy,
+                ras_energy + cas_energy,
+                ( ras_energy + cas_energy ) / self.num_col_access,
+
+                ras_latency,
+                cas_latency,
+                cross_vault_bus_latency,
+                ras_latency + cas_latency + cross_vault_bus_latency, 
+                (ras_latency + cas_latency + cross_vault_bus_latency) / self.num_col_access,
+
+            )
+        )
+
+    def naive_access( self, in_time, 
+                            req_vault, dest_vault,
+                            layer_name,
+                            start_row, start_col, 
+                            end_row, end_col ):
+        """
+        ignore spatial locality and treat every request in a per bit basis 
+        """
+        # calc access energy 
+        bits = ( end_row - start_row ) * ( end_col - start_col ) *  self.bit_unit 
+        row_access = math.ceil( bits / self.subarray_col )
+        col_access = bits
+
+        self.num_row_access += row_access
+        self.num_col_access += col_access 
+
+        if req_vault != dest_vault:
+            self.num_cross_vault_access += 1
+        
+        delta_time = self.cas_latency * col_access + self.ras_latency * row_access
+        return in_time + delta_time // 1e6
+        
+    def naive_mem_access_weight(  self,
+                                in_time, 
+                                req_vault, dest_vault, 
+                                layer_name, 
+                                start_row, start_col, 
+                                end_row, end_col ):
+        
+        return self.naive_access( in_time, 
+                                  req_vault, dest_vault, 
+                                  layer_name, 
+                                  start_row, start_col, 
+                                  end_row, end_col )
+    def naive_mem_access_partial( self,
+                                in_time,
+                                req_vault, dest_vault,
+                                fmap_name,
+                                start_row, start_col,
+                                end_row, end_col ):
+        return self.naive_access( in_time, 
+                                  req_vault, dest_vault, 
+                                  fmap_name, 
+                                  start_row, start_col, 
+                                  end_row, end_col )
 
     def mem_read_weight(    self,
                             in_time, 
@@ -58,13 +173,9 @@ class HMC( object ):
     def mem_read_partial( self,
                           in_time,
                           req_vault, dest_vault,
-                          layer_name,
+                          partial_name,
                           start_row, start_col,
                           end_row, end_col ):
-        pass 
-
-
-    def process_write( self, trace ):
         pass 
 
     def mem_write_weight(   self,
@@ -78,7 +189,7 @@ class HMC( object ):
     def mem_write_partial(      self,
                                 in_time, 
                                 dest_vault, 
-                                layer_name, 
+                                fmap_name, 
                                 start_row, start_col,
                                 end_row, end_col ):
         pass 
