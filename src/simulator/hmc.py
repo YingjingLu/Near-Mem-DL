@@ -1,6 +1,7 @@
 from mem_solver import * 
 import math 
 
+COV = 1024
 
 class HMC( object ):
     def __init__( self, config, bit_unit, mode = "naive" ):
@@ -52,7 +53,7 @@ class HMC( object ):
         self.mem_topology = dict()
     
     def process_access( self, trace ):
-        raw = trace.strip().split() 
+        raw = trace.strip().split( "," ) 
         raw[ 1 ] = float( raw[ 1 ] )
         for i in [ 2, 3, 5, 6, 7, 8 ]:
             raw[ i ] = int( raw[ i ] )
@@ -87,7 +88,7 @@ class HMC( object ):
             Energy
             Row access energy: {} nj
             Col access energy {} nj
-            Total energy consumption: {}
+            Total energy consumption: {} nj
             Unit energy {}: nj / bit
             -----------------------------------------
             Latency
@@ -196,7 +197,7 @@ class HMC( object ):
 
     # subspec calculation in ns / bit, nj / bit
     def calc_cross_vault_bus_latency( self ):
-        return 1.0e9 / self.config[ "bus" ]
+        return 1.0e9 / self.GB_to_bits( self.config[ "bus" ][ "bandwidth" ] )
 
     
     def calc_subarray_per_bank( self ):
@@ -269,7 +270,7 @@ class HMC( object ):
         datapath_bus_energy + global_dataline_energy + local_dataline_energy
         + data_buffer_energy 
         """
-        timing = self.config[ "spec" ][ "timing" ]
+        timing = self.config[ "spec" ][ "energy" ]
         return timing[ "datapath_bus_energy" ] \
                 + timing[ "global_dataline_energy" ]\
                 + timing[ "local_dataline_energy" ]\

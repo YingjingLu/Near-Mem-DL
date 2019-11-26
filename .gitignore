@@ -11,6 +11,7 @@
 *.npz
 *.npy
 *.docx
+*.pyc
 *.tex
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
