@@ -92,6 +92,8 @@ class Dataflow( object ):
                     queue.append( out )
         return res
 
+    # handle fc layers
+    
 
 
 
