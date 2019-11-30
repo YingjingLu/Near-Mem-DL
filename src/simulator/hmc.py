@@ -49,13 +49,23 @@ class HMC( object ):
                 ] for _ in range( self.num_vault )\
             ]
 
+        """
+        memory_topology: layer/fmap -> memory addr 
 
+        weight:
+            layer_name:
+                [ malloc_chunk, .... ]
+
+        fmap: 
+            fmap_name:
+                [ malloc_chunk, ..... ]
+        """
         self.mem_topology = dict()
     
     def process_access( self, trace ):
         raw = trace.strip().split( "," ) 
         raw[ 2 ] = float( raw[ 2 ] )
-        for i in [ 3, 4, 6, 7, 8, 9 ]:
+        for i in [ 3, 4, 6, 7, 8, 9, 10, 11 ]:
             raw[ i ] = int( raw[ i ] )
         if raw[ 0 ] == "weight":
             raw = raw[ 2: ]
@@ -120,13 +130,13 @@ class HMC( object ):
     def naive_access( self, in_time, 
                             req_vault, dest_vault,
                             layer_name,
-                            start_row, start_col, 
-                            end_row, end_col ):
+                            start_row, start_col, start_z,
+                            end_row, end_col, end_z ):
         """
         ignore spatial locality and treat every request in a per bit basis 
         """
         # calc access energy 
-        bits = ( end_row - start_row ) * ( end_col - start_col ) *  self.bit_unit 
+        bits = ( end_row - start_row + 1 ) * ( end_col - start_col + 1 ) * ( end_z - start_z + 1 ) *  self.bit_unit 
         row_access = math.ceil( bits / self.subarray_col )
         col_access = bits
 
@@ -143,56 +153,56 @@ class HMC( object ):
                                 in_time, 
                                 req_vault, dest_vault, 
                                 layer_name, 
-                                start_row, start_col, 
-                                end_row, end_col ):
+                                start_row, start_col, start_z,
+                            end_row, end_col, end_z ):
         
         return self.naive_access( in_time, 
                                   req_vault, dest_vault, 
                                   layer_name, 
-                                  start_row, start_col, 
-                                  end_row, end_col )
+                                  start_row, start_col, start_z,
+                                  end_row, end_col, end_z )
     def naive_mem_access_partial( self,
                                 in_time,
                                 req_vault, dest_vault,
                                 fmap_name,
-                                start_row, start_col,
-                                end_row, end_col ):
+                                start_row, start_col, start_z,
+                                end_row, end_col, end_z ):
         return self.naive_access( in_time, 
                                   req_vault, dest_vault, 
                                   fmap_name, 
-                                  start_row, start_col, 
-                                  end_row, end_col )
+                                  start_row, start_col, start_z,
+                                  end_row, end_col, end_z )
 
     def mem_read_weight(    self,
                             in_time, 
                             req_vault, dest_vault, 
                             layer_name, 
-                            start_row, start_col, 
-                            end_row, end_col ):
+                            start_row, start_col, start_z,
+                            end_row, end_col, end_z ):
         pass 
     
     def mem_read_partial( self,
                           in_time,
                           req_vault, dest_vault,
                           partial_name,
-                          start_row, start_col,
-                          end_row, end_col ):
+                          start_row, start_col, start_z,
+                          end_row, end_col, end_z ):
         pass 
 
     def mem_write_weight(   self,
                             in_time, 
                             dest_vault, 
                             layer_name, 
-                            start_row, start_col,
-                            end_row, end_col ):
+                            start_row, start_col, start_z,
+                            end_row, end_col, end_z ):
         pass 
     
     def mem_write_partial(      self,
                                 in_time, 
                                 dest_vault, 
                                 fmap_name, 
-                                start_row, start_col,
-                                end_row, end_col ):
+                                start_row, start_col, start_z,
+                                end_row, end_col, end_z ):
         pass 
 
     # subspec calculation in ns / bit, nj / bit

@@ -11,17 +11,32 @@ class Dataflow( object ):
         self.ram_config_file = ram_config_file 
         self.bit_unit = bit_unit
 
+        self.load_weight()
+        self.load_input()
+        self.do_calculation_place_partial()
 
-    def place_weight( self ):
+
+    def load_weight( self ):
         """
         determine which part of the weight is placed in which vault
         for lowest amount memory access
         """
-        pass 
-    def place_input( self ):
-        pass
+        self.load_fc_weights()
+        self.load_conv_weights()
 
+    def load_input( self ):
+        """
+        load input into the memory and plac eit into the incoming fmap queue
+        """
+        pass 
     def do_calculation_place_partial( self ):
+        """
+        keep poping the fmap from the fmap_queue,
+        load current layer weights,
+        do calculation 
+        and write the resulting fmap partials back to the memory
+
+        """
         pass 
 
 
@@ -93,7 +108,15 @@ class Dataflow( object ):
         return res
 
     # handle fc layers
+    def load_fc_weights( self ):
+        pass 
     
+    def load_fc_weight_in_vault( self, vault,  )
+    # handle conv layers
+    def load_conv_weights( self ):
+        pass 
+
+
 
 
 

@@ -20,8 +20,10 @@ Input (csv file, each trace is "," separated)
 * Requesting layer name / fmap name
 * Requesting row start index
 * Requesting col start index
-* Requesting row end index
-* Requesting col end index
+* Requesting z start index // channel, the third axis
+* Requesting row end index inclusive
+* Requesting col end index inclusive
+* Requesting z end index inclusive
 
 Output (csv file, each trace is "," separated)
 * Time elapse that the request is being requests

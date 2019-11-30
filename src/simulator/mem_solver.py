@@ -22,17 +22,6 @@ malloc_chunk:
     size
 )
 
-
-memory_topology: layer/fmap -> memory addr 
-
-weight:
-    layer_name:
-        [ malloc_chunk, .... ]
-
-fmap: 
-    fmap_name:
-        [ malloc_chunk, ..... ]
-
 """
 
 class Mem_Addr( object ):
