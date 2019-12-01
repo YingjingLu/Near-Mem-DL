@@ -4,7 +4,7 @@ import math
 COV = 1024
 
 class HMC( object ):
-    def __init__( self, config, bit_unit, mode = "naive" ):
+    def __init__( self, config, bit_unit, mode = 1 ):
         self.config = config 
         self.bit_unit = bit_unit
         self.mode = mode
@@ -69,14 +69,35 @@ class HMC( object ):
             raw[ i ] = int( raw[ i ] )
         if raw[ 0 ] == "weight":
             raw = raw[ 2: ]
-            if self.mode == "naive":
+            if self.mode == 1:
                 self.naive_mem_access_weight( *raw )
         elif raw[ 0 ] == "fmap":
             raw = raw[ 2: ]
-            if self.mode == "naive":
+            if self.mode == 1:
                 self.naive_mem_access_partial( *raw )
         else:
             NotImplementedError( "Access not implemented: {}".format( raw[ 0 ] ) )
+
+    def mem_access( self, *args ):
+        if self.mode == 1:
+            return self.naive_access( *args[ 2: ] )
+        else:
+            NotImplementedError( "mem access mode advanced not implemented" )
+
+    def pe_mem_access( self, in_time, num_pe, pe_width, req_vault, dest_vault ):
+        bits = num_pe, * pe_width *  self.bit_unit 
+        row_access = math.ceil( bits / self.subarray_col )
+        col_access = bits
+
+        self.num_row_access += row_access
+        self.num_col_access += col_access 
+
+        if req_vault != dest_vault:
+            self.num_cross_vault_access += 1
+        
+        delta_time = self.cas_latency * col_access + self.ras_latency * row_access
+        return in_time + delta_time
+
 
     def get_summary( self ):
         ras_energy = self.num_row_access * self.ras_energy

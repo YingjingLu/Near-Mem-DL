@@ -32,4 +32,18 @@ Repeat for each layer:
     if the layer fmap / partials will no longer in use from dependency graph, remove them 
 --------------------------------------------------------------------------------
 """
+import math
 
+def solve_num_stride( buffer, w, h ):
+    """
+    solve for maximized feature map assigned to each vault 
+    weight_v + num * stride_v, weight_h + num * stride_h * num
+    square
+    """
+    b = ( w + h )
+    a = 1
+    c = w * h - buffer
+    delta = b **2 - 4 * a * c
+    if delta < 0:
+        return 0
+    return math.floor( ( -b + math.sqrt( delta ) ) / 2 / a)
